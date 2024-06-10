@@ -1,0 +1,12 @@
+.ColorInverter {
+    filter: invert(0);
+    transition: filter ease-out 100ms;
+
+    // these styles will only apply to elements whose Block is "ColorInverter"
+    // and that have the { isInverted: true } prop
+    // the corresponding CSS class for these elements is .ColorInverter_isInverted
+
+    &_isInverted {
+        filter: invert(1);
+    }
+}

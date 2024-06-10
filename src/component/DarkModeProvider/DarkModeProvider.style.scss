@@ -1,0 +1,91 @@
+.DarkModeProvider {
+    // the ::after pseudo-element is what we use to invert all of the colors
+
+    &::after {
+        // by default (when dark mode is off), we don't want it to be visible
+        // so we set the opacity to 0.
+        // it is overridden with opacity: 1 in .DarkModeProvider_isEnabled::after
+        opacity: 0;
+        // defines a smooth transition when enabling or disabling dark mode
+        transition: opacity ease-out 100ms;
+        content: ""; // needed for ::after to be rendered at all
+
+        // 1. make sure the element covers the entire page
+        display: block;
+        position: fixed;
+        inset: 0;
+
+        // 2. make sure the element is white, and "above" all the other layers
+        z-index: 99999;
+        background-color: white;
+
+        // 3. magic. by using the difference blending mode with a white color,
+        // all the colors in the app become inverted.
+        // this works in all modern browsers
+        mix-blend-mode: difference;
+
+        // we want click events to "pass through" this element,
+        // so that it wouldn't interfere with the colors of the app
+        pointer-events: none;
+    }
+
+    // styles that are only applied if dark mode is enabled
+
+    &_isEnabled {
+        // by inverting all the colors of the app, we have messed up the hues,
+        // causing all the apps colors to look wrong (purple success messages etc)
+        // to avoid this effect, we adjust most color variables if dark mode is enabled
+
+        // adjust-hue is a SCSS function that "rotates" the hue of a specific color
+        // in this case, we use it to create complementary colors of the same brightness
+        --primary-error-color: #{adjust-hue(#dc6d6d, 180deg)};
+        --primary-success-color: #{adjust-hue(#7fcd91, 180deg)};
+        --primary-info-color: #{adjust-hue(#ffd166, 180deg)};
+
+        --primary-base-color: var(
+            --imported_primary_base_color,
+            #{adjust-hue($default-primary-base-color, 180deg)}
+        );
+        --primary-dark-color: var(
+            --imported_primary_dark_color,
+            #{adjust-hue($default-primary-dark-color, 180deg)}
+        );
+        --primary-light-color: var(
+            --imported_primary_light_color,
+            #{adjust-hue($default-primary-light-color, 180deg)}
+        );
+        --secondary-base-color: var(
+            --imported_secondary_base_color,
+            #{adjust-hue($default-secondary-base-color, 180deg)}
+        );
+        --secondary-dark-color: var(
+            --imported_secondary_dark_color,
+            #{adjust-hue($default-secondary-dark-color, 180deg)}
+        );
+        --secondary-light-color: var(
+            --imported_secondary_light_color,
+            #{adjust-hue($default-secondary-light-color, 180deg)}
+        );
+
+        --link-color: var(--primary-base-color);
+        --cart-overlay-totals-background: var(--secondary-base-color);
+        --overlay-desktop-border-color: var(--primary-light-color);
+        --menu-item-figure-background: var(--secondary-base-color);
+        --menu-item-hover-color: var(--primary-base-color);
+        --newsletter-subscription-placeholder-color: var(--secondary-dark-color);
+        --newsletter-subscription-button-background: var(--link-color);
+        --button-background: var(--primary-base-color);
+        --button-border: var(--primary-base-color);
+        --button-hover-background: var(--primary-dark-color);
+        --button-hover-border: var(--primary-base-color);
+
+        --product-compare-button-color: var(--primary-base-color);
+        --product-compare-button-dark-color: var(--primary-dark-color);
+        --wishlist-heart-background: var(--primary-base-color);
+
+        &::after {
+            // makes the inverting ::after element (from above) visible
+            opacity: 1;
+        }
+    }
+}
