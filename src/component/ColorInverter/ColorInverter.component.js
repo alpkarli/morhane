@@ -15,7 +15,7 @@ export class ColorInverterComponent extends PureComponent {
         isDarkModeEnabled: PropTypes.bool.isRequired,
         // a special React prop that receives the children elements
         // eslint-disable-next-line react/boolean-prop-naming
-        children: PropTypes.bool.isRequired,
+        children: PropTypes.func.isRequired,
     };
 
     render() {
