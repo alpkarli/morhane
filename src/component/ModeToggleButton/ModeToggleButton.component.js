@@ -1,3 +1,4 @@
+/* eslint-disable @scandipwa/scandipwa-guidelines/jsx-no-conditional */
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
@@ -27,7 +28,7 @@ export class ModeToggleButtonComponent extends PureComponent {
         // eslint-disable-next-line react/jsx-no-bind
         onClick={ () => enableDarkMode(!isDarkModeEnabled) }
       >
-        { __('Toggle Dark Mode') }
+        { !isDarkModeEnabled ? __('Toggle Dark Mode: 🌙') : __('Toggle Light Mode: 🔆') }
       </button>
         );
     }
