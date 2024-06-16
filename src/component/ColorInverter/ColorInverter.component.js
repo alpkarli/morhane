@@ -1,3 +1,4 @@
+import { ChildrenType } from '@scandipwa/scandipwa/src/type/Common.type';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
@@ -14,8 +15,7 @@ export class ColorInverterComponent extends PureComponent {
     // a required boolean - provided by the ColorInverterContainer
         isDarkModeEnabled: PropTypes.bool.isRequired,
         // a special React prop that receives the children elements
-        // eslint-disable-next-line react/boolean-prop-naming
-        children: PropTypes.func.isRequired,
+        children: ChildrenType.isRequired,
     };
 
     render() {
