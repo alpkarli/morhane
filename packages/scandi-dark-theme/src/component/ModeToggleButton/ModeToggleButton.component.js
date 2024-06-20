@@ -5,7 +5,7 @@ import { PureComponent } from 'react';
 /**
  * A button that enables/disables dark mode
  *
- * @namespace Morhane/Component/ModeToggleButton/Component */
+ * @namespace ScandiDarkTheme/Component/ModeToggleButton/Component */
 export class ModeToggleButtonComponent extends PureComponent {
     static propTypes = {
     // a boolean that is true if dark mode is currently enabled

@@ -8,7 +8,7 @@ import './ColorInverter.style';
  * Responsible for inverting the colors of its contents when dark mode is enabled.
  * This is used for images, which we don't want to be affected by the dark mode, so we invert them again.
  *
- * @namespace Morhane/Component/ColorInverter/Component */
+ * @namespace ScandiDarkTheme/Component/ColorInverter/Component */
 export class ColorInverterComponent extends PureComponent {
     // declare the props that this component expects
     static propTypes = {

@@ -1,13 +1,14 @@
 // import the original getStaticReducers function
 // and rename it to baseGetStaticReducers
-// import our own reducer
 import { getStaticReducers as baseGetStaticReducers } from 'SourceStore/index';
-import DarkModeReducer from 'Store/Dark Mode/DarkMode.reducer';
+
+// import our own reducer
+import DarkModeReducer from './DarkMode/DarkMode.reducer';
 
 // define getStaticReducers.
 // this is a function that returns an object of all the reducers in the app.
 // just like in the base theme...
-/** @namespace Morhane/Store/Index/getStaticReducers */
+/** @namespace ScandiDarkTheme/Store/Index/getStaticReducers */
 export const getStaticReducers = () => ({
     ...baseGetStaticReducers(),
 

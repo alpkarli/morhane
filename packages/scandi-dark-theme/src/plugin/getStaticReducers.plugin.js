@@ -1,4 +1,4 @@
-import DarkModeReducer from '../store/Dark Mode/DarkMode.reducer';
+import DarkModeReducer from '../store/DarkMode/DarkMode.reducer';
 
 // by default getStaticReducers is a function that returns an object of reducers
 // our plugin adds an additional reducer to that return value
