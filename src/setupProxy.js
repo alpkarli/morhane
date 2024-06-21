@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.use(
         '/graphql',
         createProxyMiddleware({
-            target: 'https://morhane.eu',
+            target: 'https://morhane.eu/',
             changeOrigin: true,
         })
     );
